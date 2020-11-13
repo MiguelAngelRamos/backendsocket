@@ -10,7 +10,7 @@
 </head>
 
 <body class="container">
-  <h1 class="mt-5">MiniChat</h1>
+  <h1 class="mt-5">Acceso denegado</h1>
   <hr>
   <form id="miFormulario">
     <div class="row">
@@ -34,24 +34,14 @@
     integrity="sha512-vGcPDqyonHb0c11UofnOKdSAt5zYRpKI4ow+v6hat4i96b7nHSn8PQyk0sT5L9RECyksp+SztCPP6bqeeGaRKg=="
     crossorigin="anonymous"></script>
   <script>
-    const socket = io('https://socket892.herokuapp.com/');
+    // conexion con el socket server
+    const socket = io('http://localhost:800');
 
-    // Referencias elementos al DOM
-    const formulario = document.querySelector('#miFormulario');
-    const mensajes = document.querySelector('#misMensajes');
-    const txtMensaje = document.querySelector('#txtMensaje');
-
-    // Escuchando el evento submit
-    formulario.addEventListener('submit', (ev) => {
-      ev.preventDefault();
-      const nuevoMensaje = txtMensaje.value;
-      console.log(nuevoMensaje);
-
-      // emitir mensaje al servidor
-      socket.emit('mensaje-to-server', { texto: nuevoMensaje});
-    });
+    // Para emitir
+    // socket.emit('mensaje-to-server', { data });
+    // para escuchar
     socket.on('mensaje-from-server', (data)=> {
-      mensajes.innerHTML = mensajes.innerHTML + `<li>${data.texto}</li>`
+      // callback a ejecutar
     })
   </script>
 </body>
